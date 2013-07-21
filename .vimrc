@@ -22,4 +22,5 @@ map goo :FufCoverageFile<CR>
 map qq :q!<CR>
 map gs :w<CR>
 
-
+map gj <Leader><Leader>w
+map gk <Leader><Leader>b
