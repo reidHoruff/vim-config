@@ -15,10 +15,11 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-map zl :FufLine<CR>
-map zb :FufBuffer<CR>
-map zo :FufFile<CR>
-map zc :FufCoverageFile<CR>
-map :qq :q!
+map gl :FufLine<CR>
+map gb :FufBuffer<CR>
+map go :FufFile<CR>
+map goo :FufCoverageFile<CR>
+map qq :q!<CR>
+map gs :w<CR>
 
 
