@@ -1,9 +1,7 @@
-source $ADMIN_SCRIPTS/master.vimrc
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 set nocp
-:cd ~/osmlocal/
 call pathogen#infect()
 colorscheme MonokaiDark
 nmap <silent> <c-k> :wincmd k<CR>
