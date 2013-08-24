@@ -18,9 +18,8 @@ noremap! <Left> <Esc>
 noremap <Right> ""
 noremap! <Right> <Esc>
 
-map go :FufFile<CR>
+map go :CtrlP<CR>
 map gl :FufLine<CR>
-map goo :FufCoverageFile<CR>
 map gb :FufBuffer<CR>
 map gh <Leader>bej
 map gs :w<CR>
@@ -39,10 +38,7 @@ map :sp :sp<CR>:set cursorline<CR>
 map :sq :vs<CR>:sp<CR>:wincmd l<CR>:sp<CR>
 map gg ggzz
 
-autocmd WinEnter * set relativenumber
 autocmd WinEnter * set cursorline
-
-autocmd WinLeave * set norelativenumber
 autocmd WinLeave * set nocursorline
 
 map G Gzz
@@ -52,3 +48,16 @@ map N Nzz
 map gp gh<CR>
 nnoremap + /\$\w\+_<CR>
 nnoremap _ f_x~
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn))|venv$',
+  \ 'file': '\v\.(exe|so|pyc)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+set autoindent
+set smartindent
