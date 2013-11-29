@@ -45,7 +45,6 @@ map N Nzz
 map gp gh<CR>
 map :vs :vs<CR>:set cursorline<CR>
 map :sp :sp<CR>:set cursorline<CR>
-map gnu:NERDTreeToggle<CR>
 map [ }
 map ] {
 map gU gUiwe
@@ -105,8 +104,8 @@ map gn :NERDTreeToggle<CR>
 "save on escape key
 imap <Esc> <Esc>:w<Cr>
 vmap <Esc> <Esc>:w<Cr>
-map <Esc> <Esc>:w<Cr>
 
+"save cursor position
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
