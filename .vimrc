@@ -1,16 +1,24 @@
+source /mnt/vol/engshare/admin/scripts/vim/fbvim.vim
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 "bundles here
-Bundle 'gmarik/vundle'
+"Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'FuzzyFinder'
-Bundle 'desert-warm-256' 
+Bundle 'ludovicchabant/vim-lawrencium'
+"Bundle 'FuzzyFinder'
+"Bundle 'desert-warm-256' 
 Bundle 'Valloric/YouCompleteMe'
+"Bundle 'mxw/vim-jsx'
+"Bundle 'pangloss/vim-javascript'
 
 filetype plugin indent on
+
+source /home/engshare/admin/scripts/vim/biggrep.vim
+source $ADMIN_SCRIPTS/master.vimrc
 
 "pane navigation
 nmap <silent> <c-k> :wincmd k<CR>
@@ -29,60 +37,57 @@ noremap <Right> ""
 noremap! <Right> <Esc>
 
 "some useful shortcuts
-map go :CtrlP<CR>
-map gl :FufLine<CR>
-map gb :FufBuffer<CR>
+map go :FBVimFilenameSearch<CR>
+map gl :CtrlPLine<CR>
+map gk :CtrlPBuffer<CR>
 map gh <Leader>bej
 map gs :w<CR>
-map gj <Leader><Leader>w
-map gk <Leader><Leader>b
 map qq :q!<CR>
 map cc ciw
-map gg ggzz
 map G Gzz
-map n nzz
-map N Nzz
 map gp gh<CR>
-map :vs :vs<CR>:set cursorline<CR>
-map :sp :sp<CR>:set cursorline<CR>
-map [ }
-map ] {
+map gf :TBGW<CR>
 map gU gUiwe
 map gu guiwe
+map * <C-]>zz
+"noremap '' ''zz
 nnoremap + /\$\w\+_<CR>
 nnoremap _ f_x~
+map ? I//<Esc>
 
 "allows hidden bufers (dont have to save before hiding)
 set hidden
 
 "syntax coloring
 syntax enable
-set background=dark
-let g:solarized_termcolors=256
-colorscheme molokai
-
-"highlight line on current pane
-autocmd WinEnter * set cursorline
-autocmd WinLeave * set nocursorline
+"set background=dark
+"let g:solarized_termcolors=256
+colorscheme Tomorrow-Night
 
 "ignore search/replace case
 set ignorecase
 set hlsearch
+set incsearch
 
 "all things relating to tabs
 set expandtab
-set tabstop=2
+"set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set autoindent
 set smartindent
+"set solarized_termcolors 
 
 "ctrl+p stuff
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn))|venv$',
-  \ 'file': '\v\.(exe|so|pyc)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+ \ 'dir':  '\v[\/](\.(git|hg|svn))|venv|__tests__|intern$',
+ \ 'file': '\v\.(exe|so|pyc|json|xml|png|jpg|ico|txt|py|as|apcarc|sql|sh|c|h|c|cpp|gif)$',
+ \ 'link': 'some_bad_symbolic_links',
+ \ }
+
+let g:ctrlp_by_filename = 1
+
+map <SPACE> <Plug>(easymotion-s2)
 
 "fuck swap files
 set noswapfile
@@ -96,16 +101,76 @@ set guifont=andale\ mono
 set vb
 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+"match OverLength /\%81v.\+/
 
 "nerd tree
 map gn :NERDTreeToggle<CR>
 
 "save on escape key
-imap <Esc> <Esc>:w<Cr>
-vmap <Esc> <Esc>:w<Cr>
+"imap <Esc> <Esc>:w<Cr>
+"vmap <Esc> <Esc>:w<Cr>
 
-"save cursor position
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+
+let g:NERDTreeWinSize = 80
+set sessionoptions=buffers
+
+function! MakeSession()
+  mksession! ~/mysession.vim
+endfunction
+
+function! LoadSession()
+  source ~/mysession.vim
+  hi StatusLine ctermbg=white ctermfg=darkgray
+  hi StatusLineNC ctermbg=black ctermfg=red
+  highlight Search ctermbg=yellow ctermfg=black
+endfunction
+
+
+au VimEnter * nested if argc() == 0 | call LoadSession() | endif
+au VimLeave * if argc() == 0 | call MakeSession() | endif
+
+highlight Search ctermbg=yellow ctermfg=black
+map gt :TagbarToggle<CR>
+let g:ctrlp_max_files = 0
+set number
+let g:hack#enable = 0
+
+hi StatusLineNC ctermbg=black ctermfg=red
+hi StatusLine ctermbg=white ctermfg=darkgray
+
+map <Tab> <C-W><C-W>
+
+set t_Co=256
+
+highlight Pmenu ctermbg=gray ctermfg=black
+highlight PmenuSel ctermbg=white ctermfg=black
+map gd gd``
+
+set mouse=a
+set modifiable
+map <2-LeftMouse> gd
+set nocursorline
+set ttymouse=sgr
+"let g:molokai_original = 1
+"hi String ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
+"hi Identifier ctermfg=255 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
+"hi Keyword ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
+"let g:hack#omnifunc = 0
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_filetype_specific_completion_to_disable = {'_php':1, 'javascript':1}
+"let g:ycm_filetype_blacklist = {'php':1}
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+
+noremap < <<
+noremap > >>
+
+let g:bufExplorerShowDirectories=0
+let g:bufExplorerShowRelativePath=1 
+let g:bufExplorerSortBy='mru'
+
+autocmd BufRead,BufNewFile *.php set filetype=_php
+set tags=tags;/
