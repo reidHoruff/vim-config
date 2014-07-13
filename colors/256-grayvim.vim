@@ -9,7 +9,7 @@ let python_highlight_all = 1
 let c_gnu = 1
 
 
-hi Normal	    ctermfg=253         ctermbg=235        cterm=None
+hi Normal	    ctermfg=253         ctermbg=Black        cterm=None
 hi Cursor       ctermfg=Red         ctermbg=None       cterm=None
 hi SpecialKey	ctermfg=87          ctermbg=None       cterm=Bold
 hi Directory	ctermfg=76          ctermbg=None       cterm=None
@@ -34,7 +34,7 @@ hi StatusLine   ctermfg=247         ctermbg=233        cterm=Bold
 hi VertSplit    ctermfg=247         ctermbg=234        cterm=Bold
 
 hi LineNr	    ctermfg=238         ctermbg=244        cterm=Bold
-hi LineNr	    ctermfg=247         ctermbg=235        cterm=Bold
+hi LineNr	    ctermfg=247         ctermbg=Black        cterm=Bold
 hi NonText	    ctermfg=87          ctermbg=None       cterm=Bold
 
 
