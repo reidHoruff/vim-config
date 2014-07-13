@@ -14,3 +14,6 @@ clone this repo
 :BundleInstall
 
 cd into YCM dir and ./install.sh (required cmake)
+
+##Other dot files
+  This repo also contains a few other dot files including a bash and tmux configuration. These are not copied over via write.sh
