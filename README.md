@@ -7,9 +7,9 @@ But it isn't and it doesn't.
 ##Installation
 Compile vim with Python 2.x support (Required for YCM)
 
-clone this repo
+clone this repo to ~/.vim
 
-./write.sh (this will overwite ~/.vimrc and ~/.vim/)
+./write.sh (this will overwrite ~/.vimrc)
 
 :BundleInstall
 
