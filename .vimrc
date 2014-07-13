@@ -32,7 +32,7 @@ noremap <Right> ""
 noremap! <Right> <Esc>
 
 "some useful shortcuts
-map go :FBVimFilenameSearch<CR>
+map go :CtrlPRoot<CR>
 map gl :CtrlPLine<CR>
 map gk :CtrlPBuffer<CR>
 map gh <Leader>bej
@@ -88,11 +88,12 @@ map <SPACE> <Plug>(easymotion-s2)
 set noswapfile
 
 "macvim stuff
-set noantialias
+"set noantialias
 set guioptions-=r
 set guioptions-=R
 set go-=L
-set guifont=andale\ mono
+"set guifont=andale\ mono
+set guifont=menlo
 set vb
 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
@@ -110,11 +111,11 @@ let g:NERDTreeWinSize = 80
 set sessionoptions=buffers
 
 function! MakeSession()
-  mksession! ~/mysession.vim
+  mksession! ~/.mysession.vim
 endfunction
 
 function! LoadSession()
-  source ~/mysession.vim
+  source ~/.mysession.vim
   hi StatusLine ctermbg=white ctermfg=darkgray
   hi StatusLineNC ctermbg=black ctermfg=red
   highlight Search ctermbg=yellow ctermfg=black
@@ -128,7 +129,6 @@ highlight Search ctermbg=yellow ctermfg=black
 map gt :TagbarToggle<CR>
 let g:ctrlp_max_files = 0
 set number
-let g:hack#enable = 0
 
 hi StatusLineNC ctermbg=black ctermfg=red
 hi StatusLine ctermbg=white ctermfg=darkgray
