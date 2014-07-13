@@ -1,5 +1,3 @@
-source /mnt/vol/engshare/admin/scripts/vim/fbvim.vim
-
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
@@ -16,9 +14,6 @@ Bundle 'Valloric/YouCompleteMe'
 "Bundle 'pangloss/vim-javascript'
 
 filetype plugin indent on
-
-source /home/engshare/admin/scripts/vim/biggrep.vim
-source $ADMIN_SCRIPTS/master.vimrc
 
 "pane navigation
 nmap <silent> <c-k> :wincmd k<CR>
@@ -80,8 +75,8 @@ set smartindent
 
 "ctrl+p stuff
 let g:ctrlp_custom_ignore = {
- \ 'dir':  '\v[\/](\.(git|hg|svn))|venv|__tests__|intern$',
- \ 'file': '\v\.(exe|so|pyc|json|xml|png|jpg|ico|txt|py|as|apcarc|sql|sh|c|h|c|cpp|gif)$',
+ \ 'dir':  '\v[\/](\.(git|hg|svn))|venv|__tests__$',
+ \ 'file': '\v\.(exe|so|pyc|png|jpg|ico||gif)$',
  \ 'link': 'some_bad_symbolic_links',
  \ }
 
@@ -151,15 +146,12 @@ set modifiable
 map <2-LeftMouse> gd
 set nocursorline
 set ttymouse=sgr
-"let g:molokai_original = 1
-"hi String ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
-"hi Identifier ctermfg=255 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
-"hi Keyword ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
-"let g:hack#omnifunc = 0
+
+
 let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_filetype_specific_completion_to_disable = {'_php':1, 'javascript':1}
-"let g:ycm_filetype_blacklist = {'php':1}
+
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
