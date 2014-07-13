@@ -55,9 +55,11 @@ set hidden
 
 "syntax coloring
 syntax enable
-"set background=dark
-"let g:solarized_termcolors=256
 colorscheme Tomorrow-Night
+"colorscheme mustang
+"colorscheme codeschool
+"colorscheme 256-grayvim
+
 
 "ignore search/replace case
 set ignorecase
@@ -107,7 +109,7 @@ map gn :NERDTreeToggle<CR>
 "vmap <Esc> <Esc>:w<Cr>
 
 
-let g:NERDTreeWinSize = 80
+let g:NERDTreeWinSize = 60
 set sessionoptions=buffers
 
 function! MakeSession()
@@ -116,8 +118,8 @@ endfunction
 
 function! LoadSession()
   source ~/.mysession.vim
-  hi StatusLine ctermbg=white ctermfg=darkgray
-  hi StatusLineNC ctermbg=black ctermfg=red
+  "hi StatusLine ctermbg=white ctermfg=darkgray
+  "hi StatusLineNC ctermbg=black ctermfg=red
   highlight Search ctermbg=yellow ctermfg=black
 endfunction
 
@@ -130,15 +132,15 @@ map gt :TagbarToggle<CR>
 let g:ctrlp_max_files = 0
 set number
 
-hi StatusLineNC ctermbg=black ctermfg=red
-hi StatusLine ctermbg=white ctermfg=darkgray
+"hi StatusLineNC ctermbg=black ctermfg=red
+"hi StatusLine ctermbg=white ctermfg=darkgray
 
 map <Tab> <C-W><C-W>
 
 set t_Co=256
 
-highlight Pmenu ctermbg=gray ctermfg=black
-highlight PmenuSel ctermbg=white ctermfg=black
+"hi Pmenu ctermbg=gray ctermfg=black
+"hi PmenuSel ctermbg=white ctermfg=black
 map gd gd``
 
 set mouse=a
@@ -152,10 +154,10 @@ let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_filetype_specific_completion_to_disable = {'_php':1, 'javascript':1}
 
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+"highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+"highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+"highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+"highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
 noremap < <<
 noremap > >>
