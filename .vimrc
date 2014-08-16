@@ -146,7 +146,7 @@ map gd gd``
 set mouse=a
 set modifiable
 map <2-LeftMouse> gd
-set nocursorline
+set cursorline
 set ttymouse=sgr
 
 
@@ -167,4 +167,3 @@ let g:bufExplorerShowRelativePath=1
 let g:bufExplorerSortBy='mru'
 
 autocmd BufRead,BufNewFile *.php set filetype=_php
-set tags=tags;/
