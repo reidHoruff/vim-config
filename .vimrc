@@ -37,7 +37,7 @@ map gl :CtrlPLine<CR>
 map gk :CtrlPBuffer<CR>
 map gh <Leader>bej
 map gs :w<CR>
-map qq :q!<CR>
+map qq :qa!<CR>
 map cc ciw
 map G Gzz
 map gp gh<CR>
@@ -113,11 +113,11 @@ let g:NERDTreeWinSize = 60
 set sessionoptions=buffers
 
 function! MakeSession()
-  mksession! ~/.mysession.vim
+  mksession! .mysession.vim
 endfunction
 
 function! LoadSession()
-  source ~/.mysession.vim
+  source .mysession.vim
   "hi StatusLine ctermbg=white ctermfg=darkgray
   "hi StatusLineNC ctermbg=black ctermfg=red
   highlight Search ctermbg=yellow ctermfg=black
@@ -167,3 +167,4 @@ let g:bufExplorerShowRelativePath=1
 let g:bufExplorerSortBy='mru'
 
 autocmd BufRead,BufNewFile *.php set filetype=_php
+colorscheme badwolf
