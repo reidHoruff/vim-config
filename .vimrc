@@ -10,6 +10,8 @@ Bundle 'ludovicchabant/vim-lawrencium'
 "Bundle 'FuzzyFinder'
 "Bundle 'desert-warm-256' 
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'wting/rust.vim'
+Bundle 'mbbill/undotree'
 "Bundle 'mxw/vim-jsx'
 "Bundle 'pangloss/vim-javascript'
 
@@ -55,11 +57,14 @@ set hidden
 
 "syntax coloring
 syntax enable
-colorscheme Tomorrow-Night
+"colorscheme Tomorrow-Night
 "colorscheme mustang
 "colorscheme codeschool
-"colorscheme 256-grayvim
-
+colorscheme 256-grayvim
+"colorscheme monokai
+"colorscheme Tomorrow-Night
+"colorscheme solarized
+colorscheme badwolf
 
 "ignore search/replace case
 set ignorecase
@@ -84,6 +89,7 @@ let g:ctrlp_custom_ignore = {
 
 let g:ctrlp_by_filename = 1
 
+"easymotion activated via space
 map <SPACE> <Plug>(easymotion-s2)
 
 "fuck swap files
@@ -91,25 +97,24 @@ set noswapfile
 
 "macvim stuff
 "set noantialias
-set guioptions-=r
-set guioptions-=R
-set go-=L
+"set guioptions-=r
+"set guioptions-=R
+"set go-=L
 "set guifont=andale\ mono
-set guifont=menlo
-set vb
+"set guifont=menlo
+"set vb
 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 "match OverLength /\%81v.\+/
 
 "nerd tree
 map gn :NERDTreeToggle<CR>
+let g:NERDTreeWinSize = 30 
 
 "save on escape key
 "imap <Esc> <Esc>:w<Cr>
 "vmap <Esc> <Esc>:w<Cr>
 
-
-let g:NERDTreeWinSize = 60
 set sessionoptions=buffers
 
 function! MakeSession()
@@ -143,17 +148,19 @@ set t_Co=256
 "hi PmenuSel ctermbg=white ctermfg=black
 map gd gd``
 
+"allow use of mouse
 set mouse=a
 set modifiable
 map <2-LeftMouse> gd
 set cursorline
 set ttymouse=sgr
 
-
+"you complete me stuff
 let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_filetype_specific_completion_to_disable = {'_php':1, 'javascript':1}
+let g:ycm_filetype_specific_completion_to_disable = {'_php':1, 'javascript':1, 'python':1}
 
+"git/mercurial diff coloring
 "highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 "highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 "highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -162,9 +169,19 @@ let g:ycm_filetype_specific_completion_to_disable = {'_php':1, 'javascript':1}
 noremap < <<
 noremap > >>
 
+"buff explorer stuff
 let g:bufExplorerShowDirectories=0
 let g:bufExplorerShowRelativePath=1 
 let g:bufExplorerSortBy='mru'
 
-autocmd BufRead,BufNewFile *.php set filetype=_php
-colorscheme badwolf
+"autocmd BufRead,BufNewFile *.php set filetype=_php
+
+"remember cursor position
+set nosol
+
+"persistent undo history
+set undofile  
+set undodir=~/.vim/undodir
+
+"use system clipboard as default reg
+set clipboard=unnamedplus
